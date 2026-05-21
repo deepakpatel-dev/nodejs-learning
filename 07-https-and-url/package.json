@@ -1,0 +1,24 @@
+{
+  "name": "07-https-and-url",
+  "version": "1.0.0",
+  "description": "Node.js HTTPS requests, URL parsing, and Express HTTPS server examples",
+  "main": "src/http/get.js",
+  "scripts": {
+    "server":   "node src/server/express-https.js",
+    "dev":      "nodemon src/server/express-https.js",
+    "get": "node src/http/get.js",
+    "post": "node src/http/post.js",
+    "redirect": "node src/http/redirect.js",
+    "parallel": "node src/http/parallel.js",
+    "url": "node src/url/url-methods.js",
+    "test": "node --test tests/url-parsing.test.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

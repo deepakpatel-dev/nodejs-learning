@@ -1,0 +1,3 @@
+Hello from sample.txt!
+This is a plain text file being served by Node.js file server.
+Line 3 of the file.

@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.npm
+
+# SSL / TLS — never commit private keys or certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Environment variables — never commit secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime / build output
+dist/
+build/
+coverage/
+
+# Claude Code config (local to each developer's machine)
+.claude/

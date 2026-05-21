@@ -1,0 +1,16 @@
+{
+  "name": "02-http-server",
+  "version": "1.0.0",
+  "description": "Node.js HTTP server from scratch",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["node", "http", "server"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

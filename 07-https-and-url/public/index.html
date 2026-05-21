@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Node.js HTTPS Server</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 60px auto; padding: 0 20px; }
+    h1   { color: #2563eb; }
+    .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+    button { background: #2563eb; color: #fff; border: none; padding: 10px 20px;
+             border-radius: 6px; cursor: pointer; font-size: 14px; margin: 6px 4px; }
+    button:hover { background: #1d4ed8; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 6px;
+          overflow-x: auto; font-size: 13px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Node.js HTTPS + Express Server</h1>
+  <p>Connection is encrypted (TLS 1.2+). Try the API routes below.</p>
+
+  <div class="card">
+    <h2>GET /api/status</h2>
+    <p>Returns server status, timestamp, and Node version.</p>
+    <button onclick="callApi('GET', '/api/status')">Send GET</button>
+  </div>
+
+  <div class="card">
+    <h2>POST /api/echo</h2>
+    <p>Sends JSON data and echoes it back.</p>
+    <button onclick="callApi('POST', '/api/echo', { message: 'Hello from the browser!', time: new Date().toISOString() })">Send POST</button>
+  </div>
+
+  <div class="card">
+    <h2>GET /missing-page (404 demo)</h2>
+    <button onclick="callApi('GET', '/missing-page')">Trigger 404</button>
+  </div>
+
+  <h2>Response</h2>
+  <pre id="output">Click a button to call an API route...</pre>
+
+  <script>
+    async function callApi(method, path, body) {
+      const output = document.getElementById('output');
+      output.textContent = `${method} ${path} …`;
+      try {
+        const res = await fetch(path, {
+          method,
+          headers: body ? { 'Content-Type': 'application/json' } : {},
+          body: body ? JSON.stringify(body) : undefined
+        });
+        const data = await res.json();
+        output.textContent =
+          `Status: ${res.status} ${res.statusText}\n\n` +
+          JSON.stringify(data, null, 2);
+      } catch (err) {
+        output.textContent = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
