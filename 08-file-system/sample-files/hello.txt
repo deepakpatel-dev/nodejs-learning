@@ -1,0 +1,4 @@
+Hello from Node.js File System!
+This file is used in the reading examples.
+Each line represents a piece of data you might read from a real file.
+Node.js makes reading files easy — and you'll learn three different ways to do it.

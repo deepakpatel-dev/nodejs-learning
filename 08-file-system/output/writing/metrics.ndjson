@@ -1,0 +1,3 @@
+{"sensor":"cpu","value":42,"unit":"%","ts":"2026-05-22T12:34:38.186Z"}
+{"sensor":"memory","value":78,"unit":"%","ts":"2026-05-22T12:34:38.186Z"}
+{"sensor":"disk","value":55,"unit":"%","ts":"2026-05-22T12:34:38.186Z"}

@@ -1,0 +1,7 @@
+{
+  "app": "Node.js Learning",
+  "module": "File System",
+  "topics": ["reading", "writing", "deleting", "renaming"],
+  "difficulty": "beginner",
+  "author": "deepakpatel-dev"
+}

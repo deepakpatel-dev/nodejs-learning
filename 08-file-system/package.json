@@ -1,0 +1,23 @@
+{
+  "name": "08-file-system",
+  "version": "1.0.0",
+  "description": "Node.js File System module — reading, writing, deleting, renaming",
+  "scripts": {
+    "read:callbacks": "node 01-reading/callbacks.js",
+    "read:promises":  "node 01-reading/promises.js",
+    "read:sync":      "node 01-reading/sync.js",
+    "write:file":     "node 02-writing/write-file.js",
+    "write:append":   "node 02-writing/append-file.js",
+    "write:handles":  "node 02-writing/file-handles.js",
+    "write:streams":  "node 02-writing/streams.js",
+    "delete:single":  "node 03-deleting/single-file.js",
+    "delete:multi":   "node 03-deleting/multiple-files.js",
+    "delete:dir":     "node 03-deleting/directories.js",
+    "delete:empty":   "node 03-deleting/empty-directory.js",
+    "rename:basic":   "node 04-renaming/basic-rename.js",
+    "rename:move":    "node 04-renaming/move-files.js",
+    "rename:batch":   "node 04-renaming/batch-rename.js",
+    "rename:atomic":  "node 04-renaming/atomic-rename.js"
+  },
+  "license": "ISC"
+}
