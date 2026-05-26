@@ -1,31 +1,34 @@
 const http = require('http');
-const path = require('path');
 
-// Importing custom modules
-const { getCurrentDate, formatCurrency } = require('./utils');
-const Logger = require('./logger');
+const Logger     = require('./logger');
+const { router } = require('./routes');
 
-// Create a logger instance
 const logger = new Logger('App');
 
-// Create server
-const server = http.createServer((req, res) => {
+// ── Create server ─────────────────────────────────────────────
+//
+// Every incoming request — GET or POST — goes to router().
+// router() looks at req.method + req.url and calls the right handler.
+//
+const server = http.createServer(async (req, res) => {
+  // Log every incoming request
+  logger.log(`${req.method} ${req.url}`);
+
   try {
-    logger.log(`Request received for ${req.url}`);
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(`<h1>Welcome to our app!</h1>`);
-    res.write(`<p>Current date: ${getCurrentDate()}</p>`);
-    res.write(`<p>Formatted amount: ${formatCurrency(99.99)}</p>`);
-    res.end();
-  } catch (error) {
-    logger.error(error);
-    res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('Internal Server Error');
+    await router(req, res);
+  } catch (err) {
+    // Last-resort error handler — catches anything router() didn't handle
+    logger.error(`Unhandled error: ${err.message}`);
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'Internal Server Error' }));
   }
 });
 
-// Start server
+// ── Start server ──────────────────────────────────────────────
 const PORT = process.env.PORT || 3000;
+
 server.listen(PORT, () => {
   logger.log(`Server running at http://localhost:${PORT}`);
+  logger.log('GET  → /  and  /api/status');
+  logger.log('POST → /api/users, /api/echo, /api/form, /api/calculate /api/sort');
 });
